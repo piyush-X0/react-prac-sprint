@@ -28,6 +28,7 @@ function TodoView({ id }: TodoViewProps) {
   useEffect(() => {
     const controller = new AbortController();
     setLoading(true);
+    setError(null);
 
     axios.get<TodoView>(`https://jsonplaceholder.typicode.com/todos/${id}`, { signal: controller.signal })
       .then((response) => setTitle(response.data.title))
